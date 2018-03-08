@@ -57,7 +57,7 @@ static I fsize(F f){fpos_t z;
 #if SY_WIN32
  _lseeki64(_fileno(f),0,SEEK_END); 
 #else
- fseek(f,0L,SEEK_END);
+ if(fseek(f,0L,SEEK_END))R -1;
 #endif
  fgetpos(f,&z);
  R *(I*)&z;
@@ -121,7 +121,7 @@ static B jtwa(J jt,F f,I j,A w){C*x;I n,p=0;size_t q=1;
 F1(jtjfread){A z;F f;
  F1RANK(0,jtjfread,0);
  RE(f=stdf(w));
- if(f)R 1==(I)f?jgets("\001"):3==(I)f?rdns(stdin):rd(vfn(f),0L,-1L);
+ if(f)R 1==(I)f?jgets("\001"):3==(I)f?rdns(stdin):0>ftell(f)?rdns(f):rd(vfn(f),0L,-1L);
  RZ(f=jope(w,FREAD_O)); z=rd(f,0L,-1L); fclose(f); 
  R z;
 }
