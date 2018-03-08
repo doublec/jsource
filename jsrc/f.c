@@ -703,7 +703,7 @@ static C*dropl(C*zu,C*zv,I lb,I la,C*eol){C ec0,ec1,*u,*v;I n,p,zn=zv-zu;
 // lb is jt->outmaxbefore: number of leading lines to display
 // la is jt->outmaxafter: number of trailing lines to display
 static A jtjprx(J jt,I ieol,I maxlen,I lb,I la,A w){A y,z;B ch;C e,eov[2],*v,x,*zu,*zv;D lba;
-     I c,c1,h,i,j,k,lc,m,nbx,nq,p,q,r,*s,t,zn;
+     I c,c1,h,i,j,k,lc,m,nbx=0,nq,p,q,r,*s,t,zn;
      static C bdc[]="123456789_123456\214\254\220\234\274\244\224\264\230\202\200";
  // Convert w to a character array; set t=1 if it's LIT, t=2 if C2T, 4 if C4T
  jt->jprx=1; y=thorn1u(w); jt->jprx=0; RZ(y); t=bp(AT(y));
