@@ -162,6 +162,7 @@ int main(int argc, char* argv[])
  if(!jt){char m[1000]; jefail(m), fputs(m,stderr); exit(1);}
  adadbreak=(char**)jt; // first address in jt is address of breakdata
  signal(SIGINT,sigint);
+ signal(SIGPIPE, SIG_IGN);
  
 #ifdef READLINE
  char* rl_readline_name="jconsole"; /* argv[0] varies too much*/
